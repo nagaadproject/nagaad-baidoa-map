@@ -5,7 +5,7 @@ The map visualizes **completed, ongoing, and design-ready investments**, enablin
 
 ## 🌍 Live Map
 👉 **Interactive Map:**  
-https://nagaadproject.github.io/nagaad-Baidoa-map/
+https://nagaadproject.github.io/nagaad-baidoa-map/
 
 
 ---
