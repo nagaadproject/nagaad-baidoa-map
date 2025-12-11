@@ -1,87 +1,88 @@
-# Nagaad – Baidoa Investments Interactive Map
+# Baidoa Investments Interactive Map  
+### Nagaad Project – SURP-II
 
-This repository hosts the **interactive web map of Nagaad (SURP-II) and SURP-I infrastructure investments in Baidoa City, Somalia**.  
-The map visualizes **completed, ongoing, and design-ready investments**, enabling easy exploration, filtering, and sharing with stakeholders.
-
-## 🌍 Live Map
-👉 **Interactive Map:**  
-https://nagaadproject.github.io/nagaad-baidoa-map/
-
+This repository hosts the **Baidoa Interactive Investments Map**, prepared under the Nagaad Project to visualize **completed, ongoing, and design-ready road investments**, along with key **city facilities** and **supporting infrastructure**.  
+The map helps project teams, municipalities, World Bank missions, and other stakeholders easily explore Baidoa’s investment footprint.
 
 ---
 
-## 🗺️ Map Content
+## 🌍 What This Map Shows
 
-The map includes the following layers for **Baidoa City**:
+### **Design Ready Investments**
+- Baidoa Northern Bypass Road (Gravel) – 10 km  
+- Bypass Link Road 1 – 2.9 km  
+- Bypass Link Road 2 – 3.1 km  
+- Road 4 Unaye Section 2 – 1.4 km  
+- Road 3 Sharif Gacamey Section 2  
 
-### ✅ SURP-II Investments
-- **Completed roads and bridges**
-- **Ongoing drainage and building works**
-- **Design-ready (Ready Investments)**
+### **Package 1 (Completed – 3.88 km)**
+- Ali Amhar Road – 2.78 km  
+- Hospital Road 1A – 1.1 km  
+- Box Culvert 1  
+- Box Culvert 2  
 
-### ✅ Key Infrastructure (selective)
-- Airport
-- Hospital
-- Stadium 
-- IDPs   
-_(Additional facilities may be added over time)_
+### **Package 2 (Completed – 10.62 km)**
+- 30KA Road – 3.2 km  
+- Hanano 2 Road – 4.8 km  
+- Hospital Road 1B – 2.62 km  
 
----
+### **Package 3A (Ongoing – 2.42 km, Dual Carriageway)**
+- Baidoa Main Road (Dual Carriageway) – 2.42 km  
 
-## 🧭 How to Use the Map
-
-- Use the **layer control (left panel)** to:
-  - Toggle projects by **Package** and **Status**
-- Click on any **road or facility** to:
-  - View project details
-  - Automatically zoom to the feature
-- Switch between **basemaps** (street / satellite)
-- Use the **reset/home button** to return to full city view
-
----
-
-## 🛠️ Data & Technology
-
-- **Data prep & styling:** QGIS  
-- **Web export:** qgis2web (Leaflet)  
-- **Format:** GeoJSON (EPSG:4326)  
-- **Hosting:** GitHub Pages (static site)
-
-This is a **static web map**: no backend or database is required.
+### **Package 3B (Ongoing – 3.98 km)**
+- Mursal Road – 1.38 km  
+- Sharif Gaamey Road – 1.2 km  
+- Unaye Road 4 – 1.4 km  
 
 ---
 
-## 🔄 Update Workflow (For Editors)
-
-1. Update or append features in the Baidoa GeoJSON dataset
-2. Reload data in QGIS
-3. Re-export using **qgis2web**
-4. Replace files in this repository
-5. Commit changes → map auto-updates online
-
-_No reconfiguration or redeployment required._
-
----
-
-## 📌 Notes
-
-- This map is intended for **planning, monitoring, and communication** purposes.
-- Geometries represent approximate project alignments and may not reflect as-built drawings.
-- The structure is designed to scale and will be replicated for **other cities**.
+## 🏥 City Facilities Included
+- Markets  
+- IDP Sites  
+- Baidoa Regional Hospital  
+- Baidoa Municipality Offices  
+- Barwaaqo 3 IDP Relocation Site  
+- Dr. Ayub Stadium  
+- Airport & Road to Airport  
 
 ---
 
-## 🤝 Credits & Ownership
-
-Developed under the **Somali Urban Resilience Project (SURP-II / Nagaad)**  
-Ministry of Public Works, Reconstruction & Housing (MPWR&H) – Somalia with the support of World Bank Team and Baidoa Municipality.
-
-Prepared by:  
-**Monitoring & Evaluation Team / Nagaad Project**
+## 🛣️ Other Roads
+- Baidoa → Berdale → South Border Kenya Highway  
+- Baidoa → Burhakaba → Mogadishu Highway  
 
 ---
 
-## 📬 Contact
+## 🗺️ Available Basemaps
+- OSM Standard  
+- Google Satellite  
+- Google Terrain  
+- Google Hybrid  
 
-For corrections, updates, or replication for other cities, please contact the Nagaad Project Coordination Unit.
+---
+
+## 🔗 Live Map
+You can access and explore the full interactive map here:  
+👉 **[Live Map - Baidoa Investments](https://nagaadproject.github.io/nagaad-baidoa-map/)**
+
+---
+
+## 📄 About This Map
+
+This map is produced using:
+- **GeoJSON datasets** for all investments  
+- **QGIS** for mapping and layer organization  
+- **qgis2web** for exporting the interactive web map  
+- **GitHub Pages** for hosting and sharing  
+
+The purpose is to provide a **clear visual overview** of Baidoa’s infrastructure investments to support:
+- project monitoring  
+- progress reporting  
+- planning and coordination  
+- stakeholder communication  
+
+---
+
+## ✨ Contact  
+For questions or updates, please reach out to the Nagaad Project M&E Team.
 

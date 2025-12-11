@@ -27,6 +27,7 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -35,21 +36,32 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/IDPs_4.js"></script>
-        <script src="data/UnayeRoad414km_5.js"></script>
-        <script src="data/SharifGaameyRoad312km_6.js"></script>
-        <script src="data/MursalRoad8138km_7.js"></script>
-        <script src="data/BaidoaMainRoaddualcarriageway242km_8.js"></script>
-        <script src="data/Hospitalroad1B262km_9.js"></script>
-        <script src="data/Hanano2road48km_10.js"></script>
-        <script src="data/30KAroad32km_11.js"></script>
-        <script src="data/Hospitalroad1A11km_12.js"></script>
-        <script src="data/AliAmharroad278km_13.js"></script>
-        <script src="data/Road3SharifGacameySection2_14.js"></script>
-        <script src="data/Road4UnayeSection214km_15.js"></script>
-        <script src="data/BypassLinkRoad231km_16.js"></script>
-        <script src="data/BypassLinkRoad129km_17.js"></script>
-        <script src="data/BaidoaNorthernBypassRoadGravel10km_18.js"></script>
+        <script src="data/BaidoatoBurhakabaMogadishuHighway_4.js"></script>
+        <script src="data/BaidoaBerdaleSouthborderKenyaHighway_5.js"></script>
+        <script src="data/RoadtotheAirportkml_6.js"></script>
+        <script src="data/Airport_7.js"></script>
+        <script src="data/DrAyubStadium_8.js"></script>
+        <script src="data/Barwaaqo3IDPRelocationSite_9.js"></script>
+        <script src="data/BaidoaMunicipaliityOffices_10.js"></script>
+        <script src="data/BaidoaRegionalHospital_11.js"></script>
+        <script src="data/IDPs_12.js"></script>
+        <script src="data/Markets_13.js"></script>
+        <script src="data/UnayeRoad414km_14.js"></script>
+        <script src="data/SharifGaameyRoad312km_15.js"></script>
+        <script src="data/MursalRoad8138km_16.js"></script>
+        <script src="data/BaidoaMainRoaddualcarriageway242km_17.js"></script>
+        <script src="data/Hospitalroad1B262km_18.js"></script>
+        <script src="data/Hanano2road48km_19.js"></script>
+        <script src="data/30KAroad32km_20.js"></script>
+        <script src="data/BoxCulvert2_21.js"></script>
+        <script src="data/BoxCulvert1_22.js"></script>
+        <script src="data/Hospitalroad1A11km_23.js"></script>
+        <script src="data/AliAmharroad278km_24.js"></script>
+        <script src="data/Road3SharifGacameySection2_25.js"></script>
+        <script src="data/Road4UnayeSection214km_26.js"></script>
+        <script src="data/BypassLinkRoad231km_27.js"></script>
+        <script src="data/BypassLinkRoad129km_28.js"></script>
+        <script src="data/BaidoaNorthernBypassRoadGravel10km_29.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -184,7 +196,449 @@
         });
         layer_OSMStandard_3;
         map.addLayer(layer_OSMStandard_3);
-        function pop_IDPs_4(feature, layer) {
+        function pop_BaidoatoBurhakabaMogadishuHighway_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_BaidoatoBurhakabaMogadishuHighway_4_0() {
+            return {
+                pane: 'pane_BaidoatoBurhakabaMogadishuHighway_4',
+                opacity: 1,
+                color: 'rgba(141,90,153,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BaidoatoBurhakabaMogadishuHighway_4');
+        map.getPane('pane_BaidoatoBurhakabaMogadishuHighway_4').style.zIndex = 404;
+        map.getPane('pane_BaidoatoBurhakabaMogadishuHighway_4').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoatoBurhakabaMogadishuHighway_4 = new L.geoJson(json_BaidoatoBurhakabaMogadishuHighway_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BaidoatoBurhakabaMogadishuHighway_4',
+            layerName: 'layer_BaidoatoBurhakabaMogadishuHighway_4',
+            pane: 'pane_BaidoatoBurhakabaMogadishuHighway_4',
+            onEachFeature: pop_BaidoatoBurhakabaMogadishuHighway_4,
+            style: style_BaidoatoBurhakabaMogadishuHighway_4_0,
+        });
+        bounds_group.addLayer(layer_BaidoatoBurhakabaMogadishuHighway_4);
+        map.addLayer(layer_BaidoatoBurhakabaMogadishuHighway_4);
+        function pop_BaidoaBerdaleSouthborderKenyaHighway_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_BaidoaBerdaleSouthborderKenyaHighway_5_0() {
+            return {
+                pane: 'pane_BaidoaBerdaleSouthborderKenyaHighway_5',
+                opacity: 1,
+                color: 'rgba(141,90,153,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BaidoaBerdaleSouthborderKenyaHighway_5');
+        map.getPane('pane_BaidoaBerdaleSouthborderKenyaHighway_5').style.zIndex = 405;
+        map.getPane('pane_BaidoaBerdaleSouthborderKenyaHighway_5').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoaBerdaleSouthborderKenyaHighway_5 = new L.geoJson(json_BaidoaBerdaleSouthborderKenyaHighway_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BaidoaBerdaleSouthborderKenyaHighway_5',
+            layerName: 'layer_BaidoaBerdaleSouthborderKenyaHighway_5',
+            pane: 'pane_BaidoaBerdaleSouthborderKenyaHighway_5',
+            onEachFeature: pop_BaidoaBerdaleSouthborderKenyaHighway_5,
+            style: style_BaidoaBerdaleSouthborderKenyaHighway_5_0,
+        });
+        bounds_group.addLayer(layer_BaidoaBerdaleSouthborderKenyaHighway_5);
+        map.addLayer(layer_BaidoaBerdaleSouthborderKenyaHighway_5);
+        function pop_RoadtotheAirportkml_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_RoadtotheAirportkml_6_0() {
+            return {
+                pane: 'pane_RoadtotheAirportkml_6',
+                opacity: 1,
+                color: 'rgba(141,90,153,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 7.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_RoadtotheAirportkml_6');
+        map.getPane('pane_RoadtotheAirportkml_6').style.zIndex = 406;
+        map.getPane('pane_RoadtotheAirportkml_6').style['mix-blend-mode'] = 'normal';
+        var layer_RoadtotheAirportkml_6 = new L.geoJson(json_RoadtotheAirportkml_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_RoadtotheAirportkml_6',
+            layerName: 'layer_RoadtotheAirportkml_6',
+            pane: 'pane_RoadtotheAirportkml_6',
+            onEachFeature: pop_RoadtotheAirportkml_6,
+            style: style_RoadtotheAirportkml_6_0,
+        });
+        bounds_group.addLayer(layer_RoadtotheAirportkml_6);
+        map.addLayer(layer_RoadtotheAirportkml_6);
+        function pop_Airport_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Airport_7_0() {
+            return {
+                pane: 'pane_Airport_7',
+                opacity: 1,
+                color: 'rgba(0,128,157,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,128,157,0.5607843137254902)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Airport_7');
+        map.getPane('pane_Airport_7').style.zIndex = 407;
+        map.getPane('pane_Airport_7').style['mix-blend-mode'] = 'normal';
+        var layer_Airport_7 = new L.geoJson(json_Airport_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Airport_7',
+            layerName: 'layer_Airport_7',
+            pane: 'pane_Airport_7',
+            onEachFeature: pop_Airport_7,
+            style: style_Airport_7_0,
+        });
+        bounds_group.addLayer(layer_Airport_7);
+        map.addLayer(layer_Airport_7);
+        function pop_DrAyubStadium_8(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_DrAyubStadium_8_0() {
+            return {
+                pane: 'pane_DrAyubStadium_8',
+                opacity: 1,
+                color: 'rgba(0,128,157,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,128,157,0.6784313725490196)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_DrAyubStadium_8');
+        map.getPane('pane_DrAyubStadium_8').style.zIndex = 408;
+        map.getPane('pane_DrAyubStadium_8').style['mix-blend-mode'] = 'normal';
+        var layer_DrAyubStadium_8 = new L.geoJson(json_DrAyubStadium_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DrAyubStadium_8',
+            layerName: 'layer_DrAyubStadium_8',
+            pane: 'pane_DrAyubStadium_8',
+            onEachFeature: pop_DrAyubStadium_8,
+            style: style_DrAyubStadium_8_0,
+        });
+        bounds_group.addLayer(layer_DrAyubStadium_8);
+        map.addLayer(layer_DrAyubStadium_8);
+        function pop_Barwaaqo3IDPRelocationSite_9(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Barwaaqo3IDPRelocationSite_9_0() {
+            return {
+                pane: 'pane_Barwaaqo3IDPRelocationSite_9',
+                opacity: 1,
+                color: 'rgba(0,128,157,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,128,157,0.6705882352941176)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Barwaaqo3IDPRelocationSite_9');
+        map.getPane('pane_Barwaaqo3IDPRelocationSite_9').style.zIndex = 409;
+        map.getPane('pane_Barwaaqo3IDPRelocationSite_9').style['mix-blend-mode'] = 'normal';
+        var layer_Barwaaqo3IDPRelocationSite_9 = new L.geoJson(json_Barwaaqo3IDPRelocationSite_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Barwaaqo3IDPRelocationSite_9',
+            layerName: 'layer_Barwaaqo3IDPRelocationSite_9',
+            pane: 'pane_Barwaaqo3IDPRelocationSite_9',
+            onEachFeature: pop_Barwaaqo3IDPRelocationSite_9,
+            style: style_Barwaaqo3IDPRelocationSite_9_0,
+        });
+        bounds_group.addLayer(layer_Barwaaqo3IDPRelocationSite_9);
+        map.addLayer(layer_Barwaaqo3IDPRelocationSite_9);
+        function pop_BaidoaMunicipaliityOffices_10(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_BaidoaMunicipaliityOffices_10_0() {
+            return {
+                pane: 'pane_BaidoaMunicipaliityOffices_10',
+                opacity: 1,
+                color: 'rgba(0,128,157,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,128,157,0.6705882352941176)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BaidoaMunicipaliityOffices_10');
+        map.getPane('pane_BaidoaMunicipaliityOffices_10').style.zIndex = 410;
+        map.getPane('pane_BaidoaMunicipaliityOffices_10').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoaMunicipaliityOffices_10 = new L.geoJson(json_BaidoaMunicipaliityOffices_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BaidoaMunicipaliityOffices_10',
+            layerName: 'layer_BaidoaMunicipaliityOffices_10',
+            pane: 'pane_BaidoaMunicipaliityOffices_10',
+            onEachFeature: pop_BaidoaMunicipaliityOffices_10,
+            style: style_BaidoaMunicipaliityOffices_10_0,
+        });
+        bounds_group.addLayer(layer_BaidoaMunicipaliityOffices_10);
+        map.addLayer(layer_BaidoaMunicipaliityOffices_10);
+        function pop_BaidoaRegionalHospital_11(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        var pattern_BaidoaRegionalHospital_11_0 = new L.StripePattern({
+            weight: 0.3,
+            spaceWeight: 2.0,
+            color: '#00809d',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 315
+        });
+        pattern_BaidoaRegionalHospital_11_0.addTo(map);
+        function style_BaidoaRegionalHospital_11_0() {
+            return {
+                pane: 'pane_BaidoaRegionalHospital_11',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_BaidoaRegionalHospital_11_0,
+                interactive: true,
+            }
+        }
+        function style_BaidoaRegionalHospital_11_1() {
+            return {
+                pane: 'pane_BaidoaRegionalHospital_11',
+                opacity: 1,
+                color: 'rgba(0,128,157,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BaidoaRegionalHospital_11');
+        map.getPane('pane_BaidoaRegionalHospital_11').style.zIndex = 411;
+        map.getPane('pane_BaidoaRegionalHospital_11').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoaRegionalHospital_11 = new L.geoJson.multiStyle(json_BaidoaRegionalHospital_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BaidoaRegionalHospital_11',
+            layerName: 'layer_BaidoaRegionalHospital_11',
+            pane: 'pane_BaidoaRegionalHospital_11',
+            onEachFeature: pop_BaidoaRegionalHospital_11,
+            styles: [style_BaidoaRegionalHospital_11_0,style_BaidoaRegionalHospital_11_1,]
+        });
+        bounds_group.addLayer(layer_BaidoaRegionalHospital_11);
+        map.addLayer(layer_BaidoaRegionalHospital_11);
+        function pop_IDPs_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -226,9 +680,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_IDPs_4_0() {
+        function style_IDPs_12_0() {
             return {
-                pane: 'pane_IDPs_4',
+                pane: 'pane_IDPs_12',
                 radius: 7.2,
                 opacity: 1,
                 color: 'rgba(243,166,178,1.0)',
@@ -242,27 +696,81 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_IDPs_4');
-        map.getPane('pane_IDPs_4').style.zIndex = 404;
-        map.getPane('pane_IDPs_4').style['mix-blend-mode'] = 'normal';
-        var layer_IDPs_4 = new L.geoJson(json_IDPs_4, {
+        map.createPane('pane_IDPs_12');
+        map.getPane('pane_IDPs_12').style.zIndex = 412;
+        map.getPane('pane_IDPs_12').style['mix-blend-mode'] = 'normal';
+        var layer_IDPs_12 = new L.geoJson(json_IDPs_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_IDPs_4',
-            layerName: 'layer_IDPs_4',
-            pane: 'pane_IDPs_4',
-            onEachFeature: pop_IDPs_4,
+            dataVar: 'json_IDPs_12',
+            layerName: 'layer_IDPs_12',
+            pane: 'pane_IDPs_12',
+            onEachFeature: pop_IDPs_12,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_IDPs_4_0(feature));
+                return L.circleMarker(latlng, style_IDPs_12_0(feature));
             },
         });
-        bounds_group.addLayer(layer_IDPs_4);
-        map.addLayer(layer_IDPs_4);
-        function pop_UnayeRoad414km_5(feature, layer) {
+        bounds_group.addLayer(layer_IDPs_12);
+        map.addLayer(layer_IDPs_12);
+        function pop_Markets_13(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Markets_13_0() {
+            return {
+                pane: 'pane_Markets_13',
+                opacity: 1,
+                color: 'rgba(140,0,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,0,255,0.6705882352941176)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Markets_13');
+        map.getPane('pane_Markets_13').style.zIndex = 413;
+        map.getPane('pane_Markets_13').style['mix-blend-mode'] = 'normal';
+        var layer_Markets_13 = new L.geoJson(json_Markets_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Markets_13',
+            layerName: 'layer_Markets_13',
+            pane: 'pane_Markets_13',
+            onEachFeature: pop_Markets_13,
+            style: style_Markets_13_0,
+        });
+        bounds_group.addLayer(layer_Markets_13);
+        map.addLayer(layer_Markets_13);
+        function pop_UnayeRoad414km_14(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -308,9 +816,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_UnayeRoad414km_5_0() {
+        function style_UnayeRoad414km_14_0() {
             return {
-                pane: 'pane_UnayeRoad414km_5',
+                pane: 'pane_UnayeRoad414km_14',
                 opacity: 1,
                 color: 'rgba(243,156,18,1.0)',
                 dashArray: '',
@@ -321,21 +829,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_UnayeRoad414km_5');
-        map.getPane('pane_UnayeRoad414km_5').style.zIndex = 405;
-        map.getPane('pane_UnayeRoad414km_5').style['mix-blend-mode'] = 'normal';
-        var layer_UnayeRoad414km_5 = new L.geoJson(json_UnayeRoad414km_5, {
+        map.createPane('pane_UnayeRoad414km_14');
+        map.getPane('pane_UnayeRoad414km_14').style.zIndex = 414;
+        map.getPane('pane_UnayeRoad414km_14').style['mix-blend-mode'] = 'normal';
+        var layer_UnayeRoad414km_14 = new L.geoJson(json_UnayeRoad414km_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_UnayeRoad414km_5',
-            layerName: 'layer_UnayeRoad414km_5',
-            pane: 'pane_UnayeRoad414km_5',
-            onEachFeature: pop_UnayeRoad414km_5,
-            style: style_UnayeRoad414km_5_0,
+            dataVar: 'json_UnayeRoad414km_14',
+            layerName: 'layer_UnayeRoad414km_14',
+            pane: 'pane_UnayeRoad414km_14',
+            onEachFeature: pop_UnayeRoad414km_14,
+            style: style_UnayeRoad414km_14_0,
         });
-        bounds_group.addLayer(layer_UnayeRoad414km_5);
-        map.addLayer(layer_UnayeRoad414km_5);
-        function pop_SharifGaameyRoad312km_6(feature, layer) {
+        bounds_group.addLayer(layer_UnayeRoad414km_14);
+        map.addLayer(layer_UnayeRoad414km_14);
+        function pop_SharifGaameyRoad312km_15(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -384,9 +892,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_SharifGaameyRoad312km_6_0() {
+        function style_SharifGaameyRoad312km_15_0() {
             return {
-                pane: 'pane_SharifGaameyRoad312km_6',
+                pane: 'pane_SharifGaameyRoad312km_15',
                 opacity: 1,
                 color: 'rgba(243,156,18,1.0)',
                 dashArray: '',
@@ -397,21 +905,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_SharifGaameyRoad312km_6');
-        map.getPane('pane_SharifGaameyRoad312km_6').style.zIndex = 406;
-        map.getPane('pane_SharifGaameyRoad312km_6').style['mix-blend-mode'] = 'normal';
-        var layer_SharifGaameyRoad312km_6 = new L.geoJson(json_SharifGaameyRoad312km_6, {
+        map.createPane('pane_SharifGaameyRoad312km_15');
+        map.getPane('pane_SharifGaameyRoad312km_15').style.zIndex = 415;
+        map.getPane('pane_SharifGaameyRoad312km_15').style['mix-blend-mode'] = 'normal';
+        var layer_SharifGaameyRoad312km_15 = new L.geoJson(json_SharifGaameyRoad312km_15, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SharifGaameyRoad312km_6',
-            layerName: 'layer_SharifGaameyRoad312km_6',
-            pane: 'pane_SharifGaameyRoad312km_6',
-            onEachFeature: pop_SharifGaameyRoad312km_6,
-            style: style_SharifGaameyRoad312km_6_0,
+            dataVar: 'json_SharifGaameyRoad312km_15',
+            layerName: 'layer_SharifGaameyRoad312km_15',
+            pane: 'pane_SharifGaameyRoad312km_15',
+            onEachFeature: pop_SharifGaameyRoad312km_15,
+            style: style_SharifGaameyRoad312km_15_0,
         });
-        bounds_group.addLayer(layer_SharifGaameyRoad312km_6);
-        map.addLayer(layer_SharifGaameyRoad312km_6);
-        function pop_MursalRoad8138km_7(feature, layer) {
+        bounds_group.addLayer(layer_SharifGaameyRoad312km_15);
+        map.addLayer(layer_SharifGaameyRoad312km_15);
+        function pop_MursalRoad8138km_16(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -460,9 +968,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_MursalRoad8138km_7_0() {
+        function style_MursalRoad8138km_16_0() {
             return {
-                pane: 'pane_MursalRoad8138km_7',
+                pane: 'pane_MursalRoad8138km_16',
                 opacity: 1,
                 color: 'rgba(243,156,18,1.0)',
                 dashArray: '',
@@ -473,21 +981,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_MursalRoad8138km_7');
-        map.getPane('pane_MursalRoad8138km_7').style.zIndex = 407;
-        map.getPane('pane_MursalRoad8138km_7').style['mix-blend-mode'] = 'normal';
-        var layer_MursalRoad8138km_7 = new L.geoJson(json_MursalRoad8138km_7, {
+        map.createPane('pane_MursalRoad8138km_16');
+        map.getPane('pane_MursalRoad8138km_16').style.zIndex = 416;
+        map.getPane('pane_MursalRoad8138km_16').style['mix-blend-mode'] = 'normal';
+        var layer_MursalRoad8138km_16 = new L.geoJson(json_MursalRoad8138km_16, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MursalRoad8138km_7',
-            layerName: 'layer_MursalRoad8138km_7',
-            pane: 'pane_MursalRoad8138km_7',
-            onEachFeature: pop_MursalRoad8138km_7,
-            style: style_MursalRoad8138km_7_0,
+            dataVar: 'json_MursalRoad8138km_16',
+            layerName: 'layer_MursalRoad8138km_16',
+            pane: 'pane_MursalRoad8138km_16',
+            onEachFeature: pop_MursalRoad8138km_16,
+            style: style_MursalRoad8138km_16_0,
         });
-        bounds_group.addLayer(layer_MursalRoad8138km_7);
-        map.addLayer(layer_MursalRoad8138km_7);
-        function pop_BaidoaMainRoaddualcarriageway242km_8(feature, layer) {
+        bounds_group.addLayer(layer_MursalRoad8138km_16);
+        map.addLayer(layer_MursalRoad8138km_16);
+        function pop_BaidoaMainRoaddualcarriageway242km_17(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -536,9 +1044,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BaidoaMainRoaddualcarriageway242km_8_0() {
+        function style_BaidoaMainRoaddualcarriageway242km_17_0() {
             return {
-                pane: 'pane_BaidoaMainRoaddualcarriageway242km_8',
+                pane: 'pane_BaidoaMainRoaddualcarriageway242km_17',
                 opacity: 1,
                 color: 'rgba(243,156,18,1.0)',
                 dashArray: '',
@@ -549,21 +1057,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_BaidoaMainRoaddualcarriageway242km_8');
-        map.getPane('pane_BaidoaMainRoaddualcarriageway242km_8').style.zIndex = 408;
-        map.getPane('pane_BaidoaMainRoaddualcarriageway242km_8').style['mix-blend-mode'] = 'normal';
-        var layer_BaidoaMainRoaddualcarriageway242km_8 = new L.geoJson(json_BaidoaMainRoaddualcarriageway242km_8, {
+        map.createPane('pane_BaidoaMainRoaddualcarriageway242km_17');
+        map.getPane('pane_BaidoaMainRoaddualcarriageway242km_17').style.zIndex = 417;
+        map.getPane('pane_BaidoaMainRoaddualcarriageway242km_17').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoaMainRoaddualcarriageway242km_17 = new L.geoJson(json_BaidoaMainRoaddualcarriageway242km_17, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BaidoaMainRoaddualcarriageway242km_8',
-            layerName: 'layer_BaidoaMainRoaddualcarriageway242km_8',
-            pane: 'pane_BaidoaMainRoaddualcarriageway242km_8',
-            onEachFeature: pop_BaidoaMainRoaddualcarriageway242km_8,
-            style: style_BaidoaMainRoaddualcarriageway242km_8_0,
+            dataVar: 'json_BaidoaMainRoaddualcarriageway242km_17',
+            layerName: 'layer_BaidoaMainRoaddualcarriageway242km_17',
+            pane: 'pane_BaidoaMainRoaddualcarriageway242km_17',
+            onEachFeature: pop_BaidoaMainRoaddualcarriageway242km_17,
+            style: style_BaidoaMainRoaddualcarriageway242km_17_0,
         });
-        bounds_group.addLayer(layer_BaidoaMainRoaddualcarriageway242km_8);
-        map.addLayer(layer_BaidoaMainRoaddualcarriageway242km_8);
-        function pop_Hospitalroad1B262km_9(feature, layer) {
+        bounds_group.addLayer(layer_BaidoaMainRoaddualcarriageway242km_17);
+        map.addLayer(layer_BaidoaMainRoaddualcarriageway242km_17);
+        function pop_Hospitalroad1B262km_18(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -612,9 +1120,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Hospitalroad1B262km_9_0() {
+        function style_Hospitalroad1B262km_18_0() {
             return {
-                pane: 'pane_Hospitalroad1B262km_9',
+                pane: 'pane_Hospitalroad1B262km_18',
                 opacity: 1,
                 color: 'rgba(46,204,113,1.0)',
                 dashArray: '',
@@ -625,21 +1133,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Hospitalroad1B262km_9');
-        map.getPane('pane_Hospitalroad1B262km_9').style.zIndex = 409;
-        map.getPane('pane_Hospitalroad1B262km_9').style['mix-blend-mode'] = 'normal';
-        var layer_Hospitalroad1B262km_9 = new L.geoJson(json_Hospitalroad1B262km_9, {
+        map.createPane('pane_Hospitalroad1B262km_18');
+        map.getPane('pane_Hospitalroad1B262km_18').style.zIndex = 418;
+        map.getPane('pane_Hospitalroad1B262km_18').style['mix-blend-mode'] = 'normal';
+        var layer_Hospitalroad1B262km_18 = new L.geoJson(json_Hospitalroad1B262km_18, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Hospitalroad1B262km_9',
-            layerName: 'layer_Hospitalroad1B262km_9',
-            pane: 'pane_Hospitalroad1B262km_9',
-            onEachFeature: pop_Hospitalroad1B262km_9,
-            style: style_Hospitalroad1B262km_9_0,
+            dataVar: 'json_Hospitalroad1B262km_18',
+            layerName: 'layer_Hospitalroad1B262km_18',
+            pane: 'pane_Hospitalroad1B262km_18',
+            onEachFeature: pop_Hospitalroad1B262km_18,
+            style: style_Hospitalroad1B262km_18_0,
         });
-        bounds_group.addLayer(layer_Hospitalroad1B262km_9);
-        map.addLayer(layer_Hospitalroad1B262km_9);
-        function pop_Hanano2road48km_10(feature, layer) {
+        bounds_group.addLayer(layer_Hospitalroad1B262km_18);
+        map.addLayer(layer_Hospitalroad1B262km_18);
+        function pop_Hanano2road48km_19(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -685,9 +1193,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Hanano2road48km_10_0() {
+        function style_Hanano2road48km_19_0() {
             return {
-                pane: 'pane_Hanano2road48km_10',
+                pane: 'pane_Hanano2road48km_19',
                 opacity: 1,
                 color: 'rgba(46,204,113,1.0)',
                 dashArray: '',
@@ -698,21 +1206,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Hanano2road48km_10');
-        map.getPane('pane_Hanano2road48km_10').style.zIndex = 410;
-        map.getPane('pane_Hanano2road48km_10').style['mix-blend-mode'] = 'normal';
-        var layer_Hanano2road48km_10 = new L.geoJson(json_Hanano2road48km_10, {
+        map.createPane('pane_Hanano2road48km_19');
+        map.getPane('pane_Hanano2road48km_19').style.zIndex = 419;
+        map.getPane('pane_Hanano2road48km_19').style['mix-blend-mode'] = 'normal';
+        var layer_Hanano2road48km_19 = new L.geoJson(json_Hanano2road48km_19, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Hanano2road48km_10',
-            layerName: 'layer_Hanano2road48km_10',
-            pane: 'pane_Hanano2road48km_10',
-            onEachFeature: pop_Hanano2road48km_10,
-            style: style_Hanano2road48km_10_0,
+            dataVar: 'json_Hanano2road48km_19',
+            layerName: 'layer_Hanano2road48km_19',
+            pane: 'pane_Hanano2road48km_19',
+            onEachFeature: pop_Hanano2road48km_19,
+            style: style_Hanano2road48km_19_0,
         });
-        bounds_group.addLayer(layer_Hanano2road48km_10);
-        map.addLayer(layer_Hanano2road48km_10);
-        function pop_30KAroad32km_11(feature, layer) {
+        bounds_group.addLayer(layer_Hanano2road48km_19);
+        map.addLayer(layer_Hanano2road48km_19);
+        function pop_30KAroad32km_20(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -758,9 +1266,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_30KAroad32km_11_0() {
+        function style_30KAroad32km_20_0() {
             return {
-                pane: 'pane_30KAroad32km_11',
+                pane: 'pane_30KAroad32km_20',
                 opacity: 1,
                 color: 'rgba(46,204,113,1.0)',
                 dashArray: '',
@@ -771,21 +1279,131 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_30KAroad32km_11');
-        map.getPane('pane_30KAroad32km_11').style.zIndex = 411;
-        map.getPane('pane_30KAroad32km_11').style['mix-blend-mode'] = 'normal';
-        var layer_30KAroad32km_11 = new L.geoJson(json_30KAroad32km_11, {
+        map.createPane('pane_30KAroad32km_20');
+        map.getPane('pane_30KAroad32km_20').style.zIndex = 420;
+        map.getPane('pane_30KAroad32km_20').style['mix-blend-mode'] = 'normal';
+        var layer_30KAroad32km_20 = new L.geoJson(json_30KAroad32km_20, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_30KAroad32km_11',
-            layerName: 'layer_30KAroad32km_11',
-            pane: 'pane_30KAroad32km_11',
-            onEachFeature: pop_30KAroad32km_11,
-            style: style_30KAroad32km_11_0,
+            dataVar: 'json_30KAroad32km_20',
+            layerName: 'layer_30KAroad32km_20',
+            pane: 'pane_30KAroad32km_20',
+            onEachFeature: pop_30KAroad32km_20,
+            style: style_30KAroad32km_20_0,
         });
-        bounds_group.addLayer(layer_30KAroad32km_11);
-        map.addLayer(layer_30KAroad32km_11);
-        function pop_Hospitalroad1A11km_12(feature, layer) {
+        bounds_group.addLayer(layer_30KAroad32km_20);
+        map.addLayer(layer_30KAroad32km_20);
+        function pop_BoxCulvert2_21(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Name</th>\
+                        <td>' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_BoxCulvert2_21_0() {
+            return {
+                pane: 'pane_BoxCulvert2_21',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,204,113,0.6392156862745098)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BoxCulvert2_21');
+        map.getPane('pane_BoxCulvert2_21').style.zIndex = 421;
+        map.getPane('pane_BoxCulvert2_21').style['mix-blend-mode'] = 'normal';
+        var layer_BoxCulvert2_21 = new L.geoJson(json_BoxCulvert2_21, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BoxCulvert2_21',
+            layerName: 'layer_BoxCulvert2_21',
+            pane: 'pane_BoxCulvert2_21',
+            onEachFeature: pop_BoxCulvert2_21,
+            style: style_BoxCulvert2_21_0,
+        });
+        bounds_group.addLayer(layer_BoxCulvert2_21);
+        map.addLayer(layer_BoxCulvert2_21);
+        function pop_BoxCulvert1_22(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Name</th>\
+                        <td class="visible-with-data" id="Name">' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_BoxCulvert1_22_0() {
+            return {
+                pane: 'pane_BoxCulvert1_22',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,204,113,0.6392156862745098)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BoxCulvert1_22');
+        map.getPane('pane_BoxCulvert1_22').style.zIndex = 422;
+        map.getPane('pane_BoxCulvert1_22').style['mix-blend-mode'] = 'normal';
+        var layer_BoxCulvert1_22 = new L.geoJson(json_BoxCulvert1_22, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BoxCulvert1_22',
+            layerName: 'layer_BoxCulvert1_22',
+            pane: 'pane_BoxCulvert1_22',
+            onEachFeature: pop_BoxCulvert1_22,
+            style: style_BoxCulvert1_22_0,
+        });
+        bounds_group.addLayer(layer_BoxCulvert1_22);
+        map.addLayer(layer_BoxCulvert1_22);
+        function pop_Hospitalroad1A11km_23(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -831,9 +1449,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Hospitalroad1A11km_12_0() {
+        function style_Hospitalroad1A11km_23_0() {
             return {
-                pane: 'pane_Hospitalroad1A11km_12',
+                pane: 'pane_Hospitalroad1A11km_23',
                 opacity: 1,
                 color: 'rgba(46,204,113,1.0)',
                 dashArray: '',
@@ -844,21 +1462,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Hospitalroad1A11km_12');
-        map.getPane('pane_Hospitalroad1A11km_12').style.zIndex = 412;
-        map.getPane('pane_Hospitalroad1A11km_12').style['mix-blend-mode'] = 'normal';
-        var layer_Hospitalroad1A11km_12 = new L.geoJson(json_Hospitalroad1A11km_12, {
+        map.createPane('pane_Hospitalroad1A11km_23');
+        map.getPane('pane_Hospitalroad1A11km_23').style.zIndex = 423;
+        map.getPane('pane_Hospitalroad1A11km_23').style['mix-blend-mode'] = 'normal';
+        var layer_Hospitalroad1A11km_23 = new L.geoJson(json_Hospitalroad1A11km_23, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Hospitalroad1A11km_12',
-            layerName: 'layer_Hospitalroad1A11km_12',
-            pane: 'pane_Hospitalroad1A11km_12',
-            onEachFeature: pop_Hospitalroad1A11km_12,
-            style: style_Hospitalroad1A11km_12_0,
+            dataVar: 'json_Hospitalroad1A11km_23',
+            layerName: 'layer_Hospitalroad1A11km_23',
+            pane: 'pane_Hospitalroad1A11km_23',
+            onEachFeature: pop_Hospitalroad1A11km_23,
+            style: style_Hospitalroad1A11km_23_0,
         });
-        bounds_group.addLayer(layer_Hospitalroad1A11km_12);
-        map.addLayer(layer_Hospitalroad1A11km_12);
-        function pop_AliAmharroad278km_13(feature, layer) {
+        bounds_group.addLayer(layer_Hospitalroad1A11km_23);
+        map.addLayer(layer_Hospitalroad1A11km_23);
+        function pop_AliAmharroad278km_24(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -904,9 +1522,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AliAmharroad278km_13_0() {
+        function style_AliAmharroad278km_24_0() {
             return {
-                pane: 'pane_AliAmharroad278km_13',
+                pane: 'pane_AliAmharroad278km_24',
                 opacity: 1,
                 color: 'rgba(46,204,113,1.0)',
                 dashArray: '',
@@ -917,21 +1535,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_AliAmharroad278km_13');
-        map.getPane('pane_AliAmharroad278km_13').style.zIndex = 413;
-        map.getPane('pane_AliAmharroad278km_13').style['mix-blend-mode'] = 'normal';
-        var layer_AliAmharroad278km_13 = new L.geoJson(json_AliAmharroad278km_13, {
+        map.createPane('pane_AliAmharroad278km_24');
+        map.getPane('pane_AliAmharroad278km_24').style.zIndex = 424;
+        map.getPane('pane_AliAmharroad278km_24').style['mix-blend-mode'] = 'normal';
+        var layer_AliAmharroad278km_24 = new L.geoJson(json_AliAmharroad278km_24, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AliAmharroad278km_13',
-            layerName: 'layer_AliAmharroad278km_13',
-            pane: 'pane_AliAmharroad278km_13',
-            onEachFeature: pop_AliAmharroad278km_13,
-            style: style_AliAmharroad278km_13_0,
+            dataVar: 'json_AliAmharroad278km_24',
+            layerName: 'layer_AliAmharroad278km_24',
+            pane: 'pane_AliAmharroad278km_24',
+            onEachFeature: pop_AliAmharroad278km_24,
+            style: style_AliAmharroad278km_24_0,
         });
-        bounds_group.addLayer(layer_AliAmharroad278km_13);
-        map.addLayer(layer_AliAmharroad278km_13);
-        function pop_Road3SharifGacameySection2_14(feature, layer) {
+        bounds_group.addLayer(layer_AliAmharroad278km_24);
+        map.addLayer(layer_AliAmharroad278km_24);
+        function pop_Road3SharifGacameySection2_25(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -973,9 +1591,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Road3SharifGacameySection2_14_0() {
+        function style_Road3SharifGacameySection2_25_0() {
             return {
-                pane: 'pane_Road3SharifGacameySection2_14',
+                pane: 'pane_Road3SharifGacameySection2_25',
                 opacity: 1,
                 color: 'rgba(0,70,255,1.0)',
                 dashArray: '',
@@ -986,21 +1604,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Road3SharifGacameySection2_14');
-        map.getPane('pane_Road3SharifGacameySection2_14').style.zIndex = 414;
-        map.getPane('pane_Road3SharifGacameySection2_14').style['mix-blend-mode'] = 'normal';
-        var layer_Road3SharifGacameySection2_14 = new L.geoJson(json_Road3SharifGacameySection2_14, {
+        map.createPane('pane_Road3SharifGacameySection2_25');
+        map.getPane('pane_Road3SharifGacameySection2_25').style.zIndex = 425;
+        map.getPane('pane_Road3SharifGacameySection2_25').style['mix-blend-mode'] = 'normal';
+        var layer_Road3SharifGacameySection2_25 = new L.geoJson(json_Road3SharifGacameySection2_25, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Road3SharifGacameySection2_14',
-            layerName: 'layer_Road3SharifGacameySection2_14',
-            pane: 'pane_Road3SharifGacameySection2_14',
-            onEachFeature: pop_Road3SharifGacameySection2_14,
-            style: style_Road3SharifGacameySection2_14_0,
+            dataVar: 'json_Road3SharifGacameySection2_25',
+            layerName: 'layer_Road3SharifGacameySection2_25',
+            pane: 'pane_Road3SharifGacameySection2_25',
+            onEachFeature: pop_Road3SharifGacameySection2_25,
+            style: style_Road3SharifGacameySection2_25_0,
         });
-        bounds_group.addLayer(layer_Road3SharifGacameySection2_14);
-        map.addLayer(layer_Road3SharifGacameySection2_14);
-        function pop_Road4UnayeSection214km_15(feature, layer) {
+        bounds_group.addLayer(layer_Road3SharifGacameySection2_25);
+        map.addLayer(layer_Road3SharifGacameySection2_25);
+        function pop_Road4UnayeSection214km_26(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1042,9 +1660,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Road4UnayeSection214km_15_0() {
+        function style_Road4UnayeSection214km_26_0() {
             return {
-                pane: 'pane_Road4UnayeSection214km_15',
+                pane: 'pane_Road4UnayeSection214km_26',
                 opacity: 1,
                 color: 'rgba(0,70,255,1.0)',
                 dashArray: '',
@@ -1055,21 +1673,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Road4UnayeSection214km_15');
-        map.getPane('pane_Road4UnayeSection214km_15').style.zIndex = 415;
-        map.getPane('pane_Road4UnayeSection214km_15').style['mix-blend-mode'] = 'normal';
-        var layer_Road4UnayeSection214km_15 = new L.geoJson(json_Road4UnayeSection214km_15, {
+        map.createPane('pane_Road4UnayeSection214km_26');
+        map.getPane('pane_Road4UnayeSection214km_26').style.zIndex = 426;
+        map.getPane('pane_Road4UnayeSection214km_26').style['mix-blend-mode'] = 'normal';
+        var layer_Road4UnayeSection214km_26 = new L.geoJson(json_Road4UnayeSection214km_26, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Road4UnayeSection214km_15',
-            layerName: 'layer_Road4UnayeSection214km_15',
-            pane: 'pane_Road4UnayeSection214km_15',
-            onEachFeature: pop_Road4UnayeSection214km_15,
-            style: style_Road4UnayeSection214km_15_0,
+            dataVar: 'json_Road4UnayeSection214km_26',
+            layerName: 'layer_Road4UnayeSection214km_26',
+            pane: 'pane_Road4UnayeSection214km_26',
+            onEachFeature: pop_Road4UnayeSection214km_26,
+            style: style_Road4UnayeSection214km_26_0,
         });
-        bounds_group.addLayer(layer_Road4UnayeSection214km_15);
-        map.addLayer(layer_Road4UnayeSection214km_15);
-        function pop_BypassLinkRoad231km_16(feature, layer) {
+        bounds_group.addLayer(layer_Road4UnayeSection214km_26);
+        map.addLayer(layer_Road4UnayeSection214km_26);
+        function pop_BypassLinkRoad231km_27(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1111,9 +1729,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BypassLinkRoad231km_16_0() {
+        function style_BypassLinkRoad231km_27_0() {
             return {
-                pane: 'pane_BypassLinkRoad231km_16',
+                pane: 'pane_BypassLinkRoad231km_27',
                 opacity: 1,
                 color: 'rgba(0,70,255,1.0)',
                 dashArray: '',
@@ -1124,21 +1742,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_BypassLinkRoad231km_16');
-        map.getPane('pane_BypassLinkRoad231km_16').style.zIndex = 416;
-        map.getPane('pane_BypassLinkRoad231km_16').style['mix-blend-mode'] = 'normal';
-        var layer_BypassLinkRoad231km_16 = new L.geoJson(json_BypassLinkRoad231km_16, {
+        map.createPane('pane_BypassLinkRoad231km_27');
+        map.getPane('pane_BypassLinkRoad231km_27').style.zIndex = 427;
+        map.getPane('pane_BypassLinkRoad231km_27').style['mix-blend-mode'] = 'normal';
+        var layer_BypassLinkRoad231km_27 = new L.geoJson(json_BypassLinkRoad231km_27, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BypassLinkRoad231km_16',
-            layerName: 'layer_BypassLinkRoad231km_16',
-            pane: 'pane_BypassLinkRoad231km_16',
-            onEachFeature: pop_BypassLinkRoad231km_16,
-            style: style_BypassLinkRoad231km_16_0,
+            dataVar: 'json_BypassLinkRoad231km_27',
+            layerName: 'layer_BypassLinkRoad231km_27',
+            pane: 'pane_BypassLinkRoad231km_27',
+            onEachFeature: pop_BypassLinkRoad231km_27,
+            style: style_BypassLinkRoad231km_27_0,
         });
-        bounds_group.addLayer(layer_BypassLinkRoad231km_16);
-        map.addLayer(layer_BypassLinkRoad231km_16);
-        function pop_BypassLinkRoad129km_17(feature, layer) {
+        bounds_group.addLayer(layer_BypassLinkRoad231km_27);
+        map.addLayer(layer_BypassLinkRoad231km_27);
+        function pop_BypassLinkRoad129km_28(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1180,9 +1798,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BypassLinkRoad129km_17_0() {
+        function style_BypassLinkRoad129km_28_0() {
             return {
-                pane: 'pane_BypassLinkRoad129km_17',
+                pane: 'pane_BypassLinkRoad129km_28',
                 opacity: 1,
                 color: 'rgba(0,70,255,1.0)',
                 dashArray: '',
@@ -1193,21 +1811,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_BypassLinkRoad129km_17');
-        map.getPane('pane_BypassLinkRoad129km_17').style.zIndex = 417;
-        map.getPane('pane_BypassLinkRoad129km_17').style['mix-blend-mode'] = 'normal';
-        var layer_BypassLinkRoad129km_17 = new L.geoJson(json_BypassLinkRoad129km_17, {
+        map.createPane('pane_BypassLinkRoad129km_28');
+        map.getPane('pane_BypassLinkRoad129km_28').style.zIndex = 428;
+        map.getPane('pane_BypassLinkRoad129km_28').style['mix-blend-mode'] = 'normal';
+        var layer_BypassLinkRoad129km_28 = new L.geoJson(json_BypassLinkRoad129km_28, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BypassLinkRoad129km_17',
-            layerName: 'layer_BypassLinkRoad129km_17',
-            pane: 'pane_BypassLinkRoad129km_17',
-            onEachFeature: pop_BypassLinkRoad129km_17,
-            style: style_BypassLinkRoad129km_17_0,
+            dataVar: 'json_BypassLinkRoad129km_28',
+            layerName: 'layer_BypassLinkRoad129km_28',
+            pane: 'pane_BypassLinkRoad129km_28',
+            onEachFeature: pop_BypassLinkRoad129km_28,
+            style: style_BypassLinkRoad129km_28_0,
         });
-        bounds_group.addLayer(layer_BypassLinkRoad129km_17);
-        map.addLayer(layer_BypassLinkRoad129km_17);
-        function pop_BaidoaNorthernBypassRoadGravel10km_18(feature, layer) {
+        bounds_group.addLayer(layer_BypassLinkRoad129km_28);
+        map.addLayer(layer_BypassLinkRoad129km_28);
+        function pop_BaidoaNorthernBypassRoadGravel10km_29(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1249,9 +1867,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BaidoaNorthernBypassRoadGravel10km_18_0() {
+        function style_BaidoaNorthernBypassRoadGravel10km_29_0() {
             return {
-                pane: 'pane_BaidoaNorthernBypassRoadGravel10km_18',
+                pane: 'pane_BaidoaNorthernBypassRoadGravel10km_29',
                 opacity: 1,
                 color: 'rgba(0,70,255,1.0)',
                 dashArray: '',
@@ -1262,42 +1880,54 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_BaidoaNorthernBypassRoadGravel10km_18');
-        map.getPane('pane_BaidoaNorthernBypassRoadGravel10km_18').style.zIndex = 418;
-        map.getPane('pane_BaidoaNorthernBypassRoadGravel10km_18').style['mix-blend-mode'] = 'normal';
-        var layer_BaidoaNorthernBypassRoadGravel10km_18 = new L.geoJson(json_BaidoaNorthernBypassRoadGravel10km_18, {
+        map.createPane('pane_BaidoaNorthernBypassRoadGravel10km_29');
+        map.getPane('pane_BaidoaNorthernBypassRoadGravel10km_29').style.zIndex = 429;
+        map.getPane('pane_BaidoaNorthernBypassRoadGravel10km_29').style['mix-blend-mode'] = 'normal';
+        var layer_BaidoaNorthernBypassRoadGravel10km_29 = new L.geoJson(json_BaidoaNorthernBypassRoadGravel10km_29, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BaidoaNorthernBypassRoadGravel10km_18',
-            layerName: 'layer_BaidoaNorthernBypassRoadGravel10km_18',
-            pane: 'pane_BaidoaNorthernBypassRoadGravel10km_18',
-            onEachFeature: pop_BaidoaNorthernBypassRoadGravel10km_18,
-            style: style_BaidoaNorthernBypassRoadGravel10km_18_0,
+            dataVar: 'json_BaidoaNorthernBypassRoadGravel10km_29',
+            layerName: 'layer_BaidoaNorthernBypassRoadGravel10km_29',
+            pane: 'pane_BaidoaNorthernBypassRoadGravel10km_29',
+            onEachFeature: pop_BaidoaNorthernBypassRoadGravel10km_29,
+            style: style_BaidoaNorthernBypassRoadGravel10km_29_0,
         });
-        bounds_group.addLayer(layer_BaidoaNorthernBypassRoadGravel10km_18);
-        map.addLayer(layer_BaidoaNorthernBypassRoadGravel10km_18);
+        bounds_group.addLayer(layer_BaidoaNorthernBypassRoadGravel10km_29);
+        map.addLayer(layer_BaidoaNorthernBypassRoadGravel10km_29);
         var overlaysTree = [
         {label: '<b>Design Ready Investments</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/BaidoaNorthernBypassRoadGravel10km_18.png" /> Baidoa Northern Bypass Road (Gravel) (10km)', layer: layer_BaidoaNorthernBypassRoadGravel10km_18},
-            {label: '<img src="legend/BypassLinkRoad129km_17.png" /> Bypass Link Road 1 (2.9km)', layer: layer_BypassLinkRoad129km_17},
-            {label: '<img src="legend/BypassLinkRoad231km_16.png" /> Bypass Link Road 2 (3.1km)', layer: layer_BypassLinkRoad231km_16},
-            {label: '<img src="legend/Road4UnayeSection214km_15.png" /> Road 4 Unaye Section 2 (1.4km)', layer: layer_Road4UnayeSection214km_15},
-            {label: '<img src="legend/Road3SharifGacameySection2_14.png" /> Road 3 Sharif Gacamey Section 2', layer: layer_Road3SharifGacameySection2_14},]},
+            {label: '<img src="legend/BaidoaNorthernBypassRoadGravel10km_29.png" /> Baidoa Northern Bypass Road (Gravel) (10km)', layer: layer_BaidoaNorthernBypassRoadGravel10km_29},
+            {label: '<img src="legend/BypassLinkRoad129km_28.png" /> Bypass Link Road 1 (2.9km)', layer: layer_BypassLinkRoad129km_28},
+            {label: '<img src="legend/BypassLinkRoad231km_27.png" /> Bypass Link Road 2 (3.1km)', layer: layer_BypassLinkRoad231km_27},
+            {label: '<img src="legend/Road4UnayeSection214km_26.png" /> Road 4 Unaye Section 2 (1.4km)', layer: layer_Road4UnayeSection214km_26},
+            {label: '<img src="legend/Road3SharifGacameySection2_25.png" /> Road 3 Sharif Gacamey Section 2', layer: layer_Road3SharifGacameySection2_25},]},
         {label: '<b>Package 1 (3.88km) Completed</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/AliAmharroad278km_13.png" /> Ali Amhar road (2.78km)', layer: layer_AliAmharroad278km_13},
-            {label: '<img src="legend/Hospitalroad1A11km_12.png" /> Hospital road 1A (1.1km)', layer: layer_Hospitalroad1A11km_12},]},
+            {label: '<img src="legend/AliAmharroad278km_24.png" /> Ali Amhar road (2.78km)', layer: layer_AliAmharroad278km_24},
+            {label: '<img src="legend/Hospitalroad1A11km_23.png" /> Hospital road 1A (1.1km)', layer: layer_Hospitalroad1A11km_23},
+            {label: '<img src="legend/BoxCulvert1_22.png" /> Box Culvert 1', layer: layer_BoxCulvert1_22},
+            {label: '<img src="legend/BoxCulvert2_21.png" /> Box Culvert 2', layer: layer_BoxCulvert2_21},]},
         {label: '<b>Package 2 (10.62km) Completed</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/30KAroad32km_11.png" /> 30KA road (3.2km)', layer: layer_30KAroad32km_11},
-            {label: '<img src="legend/Hanano2road48km_10.png" /> Hanano 2 road (4.8km)', layer: layer_Hanano2road48km_10},
-            {label: '<img src="legend/Hospitalroad1B262km_9.png" /> Hospital road 1B (2.62km)', layer: layer_Hospitalroad1B262km_9},]},
+            {label: '<img src="legend/30KAroad32km_20.png" /> 30KA road (3.2km)', layer: layer_30KAroad32km_20},
+            {label: '<img src="legend/Hanano2road48km_19.png" /> Hanano 2 road (4.8km)', layer: layer_Hanano2road48km_19},
+            {label: '<img src="legend/Hospitalroad1B262km_18.png" /> Hospital road 1B (2.62km)', layer: layer_Hospitalroad1B262km_18},]},
         {label: '<b>Package 3A (2.42km dual) Ongoing</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/BaidoaMainRoaddualcarriageway242km_8.png" /> Baidoa Main Road - dual carriageway (2.42km)', layer: layer_BaidoaMainRoaddualcarriageway242km_8},]},
+            {label: '<img src="legend/BaidoaMainRoaddualcarriageway242km_17.png" /> Baidoa Main Road - dual carriageway (2.42km)', layer: layer_BaidoaMainRoaddualcarriageway242km_17},]},
         {label: '<b>Package 3B (3.98km) Ongoing</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/MursalRoad8138km_7.png" /> Mursal Road 8 (1.38km)', layer: layer_MursalRoad8138km_7},
-            {label: '<img src="legend/SharifGaameyRoad312km_6.png" /> Sharif Gaamey Road 3 (1.2km)', layer: layer_SharifGaameyRoad312km_6},
-            {label: '<img src="legend/UnayeRoad414km_5.png" /> Unaye Road 4 (1.4km)', layer: layer_UnayeRoad414km_5},]},
+            {label: '<img src="legend/MursalRoad8138km_16.png" /> Mursal Road 8 (1.38km)', layer: layer_MursalRoad8138km_16},
+            {label: '<img src="legend/SharifGaameyRoad312km_15.png" /> Sharif Gaamey Road 3 (1.2km)', layer: layer_SharifGaameyRoad312km_15},
+            {label: '<img src="legend/UnayeRoad414km_14.png" /> Unaye Road 4 (1.4km)', layer: layer_UnayeRoad414km_14},]},
         {label: '<b>Facilities</b>',  selectAllCheckbox: true, children: [
-            {label: '<img src="legend/IDPs_4.png" /> IDPs', layer: layer_IDPs_4},]},
+            {label: '<img src="legend/Markets_13.png" /> Markets', layer: layer_Markets_13},
+            {label: '<img src="legend/IDPs_12.png" /> IDPs', layer: layer_IDPs_12},
+            {label: '<img src="legend/BaidoaRegionalHospital_11.png" /> Baidoa Regional Hospital', layer: layer_BaidoaRegionalHospital_11},
+            {label: '<img src="legend/BaidoaMunicipaliityOffices_10.png" /> Baidoa Municipaliity Offices', layer: layer_BaidoaMunicipaliityOffices_10},
+            {label: '<img src="legend/Barwaaqo3IDPRelocationSite_9.png" /> Barwaaqo 3 IDP Relocation Site', layer: layer_Barwaaqo3IDPRelocationSite_9},
+            {label: '<img src="legend/DrAyubStadium_8.png" /> Dr Ayub Stadium', layer: layer_DrAyubStadium_8},
+            {label: '<img src="legend/Airport_7.png" /> Airport', layer: layer_Airport_7},
+            {label: '<img src="legend/RoadtotheAirportkml_6.png" /> Road to the Airport.kml', layer: layer_RoadtotheAirportkml_6},]},
+        {label: '<b>Other Roads</b>',  selectAllCheckbox: true, children: [
+            {label: '<img src="legend/BaidoaBerdaleSouthborderKenyaHighway_5.png" /> Baidoa Berdale>Southborder Kenya Highway', layer: layer_BaidoaBerdaleSouthborderKenyaHighway_5},
+            {label: '<img src="legend/BaidoatoBurhakabaMogadishuHighway_4.png" /> Baidoa to Burhakaba > Mogadishu Highway', layer: layer_BaidoatoBurhakabaMogadishuHighway_4},]},
         {label: '<b>Basemaps</b>',  selectAllCheckbox: true, children: [
             {label: "OSM Standard", layer: layer_OSMStandard_3, radioGroup: 'bm' },
             {label: "Google Satellite", layer: layer_GoogleSatellite_2, radioGroup: 'bm' },
@@ -1365,12 +1995,12 @@
         });       
         setBounds();
         var i = 0;
-        layer_UnayeRoad414km_5.eachLayer(function(layer) {
+        layer_UnayeRoad414km_14.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_UnayeRoad414km_5'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_UnayeRoad414km_14'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1378,12 +2008,12 @@
               i++;
         });
         var i = 0;
-        layer_SharifGaameyRoad312km_6.eachLayer(function(layer) {
+        layer_SharifGaameyRoad312km_15.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SharifGaameyRoad312km_6'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SharifGaameyRoad312km_15'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1391,12 +2021,12 @@
               i++;
         });
         var i = 0;
-        layer_MursalRoad8138km_7.eachLayer(function(layer) {
+        layer_MursalRoad8138km_16.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_MursalRoad8138km_7'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_MursalRoad8138km_16'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1404,12 +2034,12 @@
               i++;
         });
         var i = 0;
-        layer_BaidoaMainRoaddualcarriageway242km_8.eachLayer(function(layer) {
+        layer_BaidoaMainRoaddualcarriageway242km_17.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoaMainRoaddualcarriageway242km_8'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoaMainRoaddualcarriageway242km_17'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1417,12 +2047,12 @@
               i++;
         });
         var i = 0;
-        layer_Hospitalroad1B262km_9.eachLayer(function(layer) {
+        layer_Hospitalroad1B262km_18.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hospitalroad1B262km_9'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hospitalroad1B262km_18'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1430,12 +2060,12 @@
               i++;
         });
         var i = 0;
-        layer_Hanano2road48km_10.eachLayer(function(layer) {
+        layer_Hanano2road48km_19.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hanano2road48km_10'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hanano2road48km_19'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1443,12 +2073,12 @@
               i++;
         });
         var i = 0;
-        layer_30KAroad32km_11.eachLayer(function(layer) {
+        layer_30KAroad32km_20.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_30KAroad32km_11'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_30KAroad32km_20'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1456,12 +2086,12 @@
               i++;
         });
         var i = 0;
-        layer_Hospitalroad1A11km_12.eachLayer(function(layer) {
+        layer_Hospitalroad1A11km_23.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hospitalroad1A11km_12'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hospitalroad1A11km_23'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1469,12 +2099,12 @@
               i++;
         });
         var i = 0;
-        layer_AliAmharroad278km_13.eachLayer(function(layer) {
+        layer_AliAmharroad278km_24.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_AliAmharroad278km_13'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_AliAmharroad278km_24'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1482,12 +2112,12 @@
               i++;
         });
         var i = 0;
-        layer_Road3SharifGacameySection2_14.eachLayer(function(layer) {
+        layer_Road3SharifGacameySection2_25.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Road3SharifGacameySection2_14'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Road3SharifGacameySection2_25'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1495,12 +2125,12 @@
               i++;
         });
         var i = 0;
-        layer_Road4UnayeSection214km_15.eachLayer(function(layer) {
+        layer_Road4UnayeSection214km_26.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Road4UnayeSection214km_15'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Road4UnayeSection214km_26'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1508,12 +2138,12 @@
               i++;
         });
         var i = 0;
-        layer_BypassLinkRoad231km_16.eachLayer(function(layer) {
+        layer_BypassLinkRoad231km_27.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BypassLinkRoad231km_16'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BypassLinkRoad231km_27'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1521,12 +2151,12 @@
               i++;
         });
         var i = 0;
-        layer_BypassLinkRoad129km_17.eachLayer(function(layer) {
+        layer_BypassLinkRoad129km_28.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BypassLinkRoad129km_17'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BypassLinkRoad129km_28'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1534,27 +2164,27 @@
               i++;
         });
         var i = 0;
-        layer_BaidoaNorthernBypassRoadGravel10km_18.eachLayer(function(layer) {
+        layer_BaidoaNorthernBypassRoadGravel10km_29.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoaNorthernBypassRoadGravel10km_18'});
+            layer.bindTooltip((layer.feature.properties['subproject'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['subproject']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoaNorthernBypassRoadGravel10km_29'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_IDPs_4,layer_UnayeRoad414km_5,layer_SharifGaameyRoad312km_6,layer_MursalRoad8138km_7,layer_BaidoaMainRoaddualcarriageway242km_8,layer_Hospitalroad1B262km_9,layer_Hanano2road48km_10,layer_30KAroad32km_11,layer_Hospitalroad1A11km_12,layer_AliAmharroad278km_13,layer_Road3SharifGacameySection2_14,layer_Road4UnayeSection214km_15,layer_BypassLinkRoad231km_16,layer_BypassLinkRoad129km_17,layer_BaidoaNorthernBypassRoadGravel10km_18]);
+        resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection2_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         map.on("zoomend", function(){
-            resetLabels([layer_IDPs_4,layer_UnayeRoad414km_5,layer_SharifGaameyRoad312km_6,layer_MursalRoad8138km_7,layer_BaidoaMainRoaddualcarriageway242km_8,layer_Hospitalroad1B262km_9,layer_Hanano2road48km_10,layer_30KAroad32km_11,layer_Hospitalroad1A11km_12,layer_AliAmharroad278km_13,layer_Road3SharifGacameySection2_14,layer_Road4UnayeSection214km_15,layer_BypassLinkRoad231km_16,layer_BypassLinkRoad129km_17,layer_BaidoaNorthernBypassRoadGravel10km_18]);
+            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection2_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_IDPs_4,layer_UnayeRoad414km_5,layer_SharifGaameyRoad312km_6,layer_MursalRoad8138km_7,layer_BaidoaMainRoaddualcarriageway242km_8,layer_Hospitalroad1B262km_9,layer_Hanano2road48km_10,layer_30KAroad32km_11,layer_Hospitalroad1A11km_12,layer_AliAmharroad278km_13,layer_Road3SharifGacameySection2_14,layer_Road4UnayeSection214km_15,layer_BypassLinkRoad231km_16,layer_BypassLinkRoad129km_17,layer_BaidoaNorthernBypassRoadGravel10km_18]);
+            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection2_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_IDPs_4,layer_UnayeRoad414km_5,layer_SharifGaameyRoad312km_6,layer_MursalRoad8138km_7,layer_BaidoaMainRoaddualcarriageway242km_8,layer_Hospitalroad1B262km_9,layer_Hanano2road48km_10,layer_30KAroad32km_11,layer_Hospitalroad1A11km_12,layer_AliAmharroad278km_13,layer_Road3SharifGacameySection2_14,layer_Road4UnayeSection214km_15,layer_BypassLinkRoad231km_16,layer_BypassLinkRoad129km_17,layer_BaidoaNorthernBypassRoadGravel10km_18]);
+            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection2_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         </script>        
     </body>
