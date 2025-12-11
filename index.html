@@ -69,7 +69,7 @@
             highlightLayer.openPopup();
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:19, minZoom:5
+            zoomControl:false, maxZoom:19, minZoom:1
         })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -150,7 +150,7 @@
             pane: 'pane_GoogleHybrid_0',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-            minZoom: 5,
+            minZoom: 1,
             maxZoom: 19,
             minNativeZoom: 0,
             maxNativeZoom: 20
@@ -163,7 +163,7 @@
             pane: 'pane_GoogleTerrain_1',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-            minZoom: 5,
+            minZoom: 1,
             maxZoom: 19,
             minNativeZoom: 0,
             maxNativeZoom: 20
@@ -176,7 +176,7 @@
             pane: 'pane_GoogleSatellite_2',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-            minZoom: 5,
+            minZoom: 1,
             maxZoom: 19,
             minNativeZoom: 0,
             maxNativeZoom: 20
@@ -189,7 +189,7 @@
             pane: 'pane_OSMStandard_3',
             opacity: 1.0,
             attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-            minZoom: 5,
+            minZoom: 1,
             maxZoom: 19,
             minNativeZoom: 0,
             maxNativeZoom: 19
@@ -1995,6 +1995,32 @@
         });       
         setBounds();
         var i = 0;
+        layer_BaidoatoBurhakabaMogadishuHighway_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Name'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoatoBurhakabaMogadishuHighway_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_BaidoaBerdaleSouthborderKenyaHighway_5.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Name'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BaidoaBerdaleSouthborderKenyaHighway_5'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
         layer_UnayeRoad414km_14.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
@@ -2176,15 +2202,15 @@
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
+        resetLabels([layer_BaidoatoBurhakabaMogadishuHighway_4,layer_BaidoaBerdaleSouthborderKenyaHighway_5,layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         map.on("zoomend", function(){
-            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
+            resetLabels([layer_BaidoatoBurhakabaMogadishuHighway_4,layer_BaidoaBerdaleSouthborderKenyaHighway_5,layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
+            resetLabels([layer_BaidoatoBurhakabaMogadishuHighway_4,layer_BaidoaBerdaleSouthborderKenyaHighway_5,layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
+            resetLabels([layer_BaidoatoBurhakabaMogadishuHighway_4,layer_BaidoaBerdaleSouthborderKenyaHighway_5,layer_IDPs_12,layer_UnayeRoad414km_14,layer_SharifGaameyRoad312km_15,layer_MursalRoad8138km_16,layer_BaidoaMainRoaddualcarriageway242km_17,layer_Hospitalroad1B262km_18,layer_Hanano2road48km_19,layer_30KAroad32km_20,layer_Hospitalroad1A11km_23,layer_AliAmharroad278km_24,layer_Road3SharifGacameySection205km_25,layer_Road4UnayeSection214km_26,layer_BypassLinkRoad231km_27,layer_BypassLinkRoad129km_28,layer_BaidoaNorthernBypassRoadGravel10km_29]);
         });
         </script>        
     </body>
