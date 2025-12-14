@@ -9,11 +9,12 @@ The map helps project teams, municipalities, World Bank missions, and other stak
 ## 🌍 What This Map Shows
 
 ### **Design Ready Investments**
-- Baidoa Northern Bypass Road (Gravel) – 10 km  
+- Baidoa Northern Bypass Road – 10 km  
 - Bypass Link Road 1 – 2.9 km  
 - Bypass Link Road 2 – 3.1 km  
 - Road 4 Unaye Section 2 – 1.4 km  
 - Road 3 Sharif Gacamey Section 2  
+- Road 7 Hanano Road extension - 1 km
 
 ### **Package 1 (Completed – 3.88 km)**
 - Ali Amhar Road – 2.78 km  
